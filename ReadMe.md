@@ -5,6 +5,9 @@ Please follow the instruction to prepare yourself for the course.
 
 ## 1. Create Folder Structure
 
+
+
+
 ```cmd
 c:\>md current-training-name
 c:\>md current-training-name\trainers-work
