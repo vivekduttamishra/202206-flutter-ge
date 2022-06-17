@@ -57,6 +57,19 @@ c:\current-training-name\my-work> git checkout -b participant01
 c:\current-training-name\my-work> git-update branch-created
 ```
 
+### Notes for Macbook
+
+1. grant permission to git-update script to
+```cmd
+c:\current-training-name\my-work> chmod 777 git-update
+```
+
+2. append **"./"** to the git-update command whenever needed
+
+```cmd
+c:\current-training-name\my-work>./git-update branch-created
+```
+
 # Part 2
 
 ## To download trainer-work whenever required
