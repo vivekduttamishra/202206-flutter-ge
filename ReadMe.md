@@ -3,8 +3,6 @@
 Please follow the instruction to prepare yourself for the course.
 
 
-
-
 ## 1. Create Folder Structure
 
 ```cmd
