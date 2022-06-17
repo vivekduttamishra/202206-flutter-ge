@@ -54,6 +54,7 @@ c:\current-training-name\my-work> git clone reposiotory-url .
 
 ```cmd
 c:\current-training-name\my-work> git checkout -b participant01
+c:\current-training-name\my-work> git-update branch-created
 ```
 
 # Part 2
@@ -74,7 +75,7 @@ c:\current-training-name\trainers-work>git pull
 * to upload your content 
 
 ```cmd
-c:\current-training-name\my-work>git-update-branch remark-for-this-update
+c:\current-training-name\my-work>git-update remark-for-this-update
 ```
 
 
