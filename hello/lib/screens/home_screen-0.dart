@@ -1,33 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hello/components/counter.dart';
+import 'package:hello/screens/counter_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
+  int counter = 10;
   HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  int counter = 0;
-
-  void incrementCounter() {
-    setState(() {
-      counter++;
-    });
-  }
-
-  void decrementCounter() {
-    setState(() {
-      counter--;
-    });
-  }
-
-  void resetCounter() {
-    setState(() {
-      counter = 0;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,14 +18,18 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           TextButton(
-            onPressed: resetCounter,
+            onPressed: () {
+              print('Item reset');
+            },
             child: const Icon(
               Icons.refresh,
               color: Colors.white,
             ),
           ),
           TextButton(
-            onPressed: decrementCounter,
+            onPressed: () {
+              print('Item removed');
+            },
             child: const Icon(
               Icons.remove,
               color: Colors.white,
@@ -66,15 +46,32 @@ class _HomeScreenState extends State<HomeScreen> {
         //   padding: const EdgeInsets.all(
         //     20,
         //   ),
-        // padding: const EdgeInsets.symmetric(
-        //   horizontal: 20,
-        //   vertical: 40,
-        // ),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 40,
+        ),
         color: Colors.yellow.shade300,
-        child: Counter(counter),
+        child: Align(
+          alignment: Alignment.center,
+          child: Center(
+            // child: Text(
+            //   counter.toString(),
+            //   textAlign: TextAlign.center,
+            //   style: const TextStyle(
+            //     fontSize: 100,
+            //     fontFamily: 'Courier',
+            //     fontWeight: FontWeight.w600,
+            //   ),
+            // ),
+            child: CounterScreen(),
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: incrementCounter,
+        onPressed: () {
+          counter++;
+          print('Button Pressed $counter');
+        },
         child: const Icon(
           Icons.add,
         ),

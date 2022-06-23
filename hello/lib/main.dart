@@ -7,7 +7,7 @@ void main() {
   //runApp(MaterialApp(home: Center(child: Text('Hello World'))));
   runApp(
     // provides necessary values for material guidelines
-    const MaterialApp(
+    MaterialApp(
       home: HomeScreen(),
     ),
   );
