@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
@@ -8,16 +8,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.lightGreen,
-        child: Center(
-          child: Text(
-            "Quizzy",
-            style: TextStyle(
-              fontSize: 100,
-            ),
-          ),
-        ),
+      body: Column(
+          mainAxisAlignment:MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset('assets/images/logo02.png'),
+            OutlinedButton(
+              onPressed: (){}, 
+              child:Text('Start'),
+              ),
+          ],
       ),
     );
   }

@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 
 import 'screens/home_screen.dart';
+import 'screens/quiz_screen.dart';
 
 class MyApp extends StatelessWidget{
   const MyApp({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
     
     return MaterialApp(
-      home: HomeScreen(),
+      home: QuizScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
