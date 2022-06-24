@@ -74,6 +74,28 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+  
+  fonts:
+    - family: QuestionFont
+      fonts:
+        - asset: assets/fonts/BadScript-Regular.ttf
+    
+    - family: Amatic
+      fonts:
+        - asset: assets/fonts/AmaticSC-Regular.ttf
+        - asset: assets/fonts/AmaticSC-Bold.ttf
+          weight: 700
+    - family: Mali
+      fonts:
+        - asset: assets/fonts/Mali-Regular.ttf
+        - asset: assets/fonts/Mali-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Mali-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Mali-BoldItalic.ttf
+          style: italic  
+          weight: 700
+          
   # fonts:
   #   - family: Schyler
   #     fonts:

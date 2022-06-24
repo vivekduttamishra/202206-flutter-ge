@@ -27,20 +27,30 @@ class QuizScreen extends StatelessWidget {
         color: Colors.redAccent,
         width: double.infinity,
         height: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            // ignore: prefer_const_literals_to_create_immutables
-            
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          // ignore: prefer_const_literals_to_create_immutables
+          //mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Column(
+              
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
+                Text(
+                  "Who first called Mahatma Gandhi as the father of the nation?",
+                  style: questionStyle,
+                ),
+                Divider(
+                  // color:Colors.black,
+                  thickness: 2,
+                ),
+              ],
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text(
-                    "Who first called Mahatma Gandhi as the father of the nation?",
-                    style: questionStyle,
-                  ),
                   OutlinedButton(
                     onPressed: () {},
                     style: ButtonStyle(),
@@ -72,22 +82,23 @@ class QuizScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: Icon(Icons.arrow_back),
-                  ),
-                  Text('2 of 5'),
-                  TextButton(
-                    onPressed: () {},
-                    child: Icon(Icons.arrow_forward),
-                  ),
-                ],
-              )
-            ],
-          ),
+            ),
+            
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  child: Icon(Icons.arrow_back),
+                ),
+                Text('2 of 5'),
+                TextButton(
+                  onPressed: () {},
+                  child: Icon(Icons.arrow_forward),
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );
