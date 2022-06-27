@@ -1,9 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, curly_braces_in_flow_control_structures
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:quiz/services/quiz.dart';
-import 'dart:collection';
 
 import '../components/answer_button.dart';
 import '../const.dart';
@@ -29,6 +28,11 @@ class _QuizScreenState extends State<QuizScreen> {
     setState((){
       widget.quiz.respond(answerIndex);
       var q= widget.quiz.currentQuestion;
+      while(true){
+        widget.quiz.next();
+        if(!widget.quiz.currentQuestion.isAnswered|| widget.quiz.currentQuestionIndex==widget.quiz.totalQuestions)
+          break;
+      }
     });
   }
 
@@ -54,16 +58,22 @@ class _QuizScreenState extends State<QuizScreen> {
         title: Text('Quizzy'),
         actions: [
           TextButton(
-            onPressed: () {widget.navigate("home");},
+            onPressed: () {widget.navigate("result");},
             child: Icon(
-              Icons.send,
-              color: Color.fromARGB(255, 85, 74, 74),
+              Icons.summarize,
+              color: Colors.white,
             ),
+          ),
+          TextButton(
+            child:Icon(
+              Icons.home, 
+              color: Colors.white,),
+            onPressed:(){widget.navigate('home');},
           ),
         ],
       ),
       body: Container(
-        color: Colors.yellow.shade100,
+        color: appBodyColor(),
         width: double.infinity,
         height: double.infinity,
         padding: const EdgeInsets.all(12.0),

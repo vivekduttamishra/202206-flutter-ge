@@ -17,3 +17,5 @@ const answerStyle=TextStyle(
   fontStyle:FontStyle.italic,
  
 );
+
+final appBodyColor=Colors.yellow.shade100;

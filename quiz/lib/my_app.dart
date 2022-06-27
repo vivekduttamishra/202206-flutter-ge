@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'data/questions.dart';
 import 'screens/home_screen.dart';
 import 'screens/quiz_screen.dart';
-import 'screens/table_screen.dart';
+import 'screens/result_screen.dart';
+
 import 'services/quiz.dart';
 
 class MyApp extends StatefulWidget{
@@ -26,7 +27,8 @@ class _MyAppState extends State<MyApp> {
   get screen {
     Map<String,Function> screens={
         "home": ()=>HomeScreen(quiz,navigate),
-        "quiz":()=>QuizScreen(quiz,navigate),
+        "quiz": ()=>QuizScreen(quiz,navigate),
+        "result":()=>ResultScreen(quiz,navigate),
     };
 
     return screens[currentScreen];
