@@ -26,11 +26,7 @@ class BookDetailsScreen extends StatelessWidget {
             child: Icon(Icons.list, color: Theme.of(context).colorScheme.onPrimary),
             onPressed: () {
                //Navigator.of(context).pop()
-               Navigator.pushNamedAndRemoveUntil(
-                      context, 
-                      BookListScreen.routeName, 
-                      ModalRoute.withName(BookListScreen.routeName)
-              );
+              Navigator.popUntil(context, ModalRoute.withName(BookListScreen.routeName));
             },
           )
         ]),
