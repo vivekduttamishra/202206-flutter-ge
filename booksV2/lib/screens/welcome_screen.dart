@@ -5,7 +5,7 @@ import 'book_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  static const routeName="/";
+  
   const WelcomeScreen( {Key? key}) : super(key: key);
 
   @override
@@ -30,16 +30,12 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
               onPressed:(){
-                // Navigator
-                //   .of(context)
-                //   .push(
-                //       MaterialPageRoute(
-                //             builder: (context) => BookListScreen()),
-                //   );
-
-                //Navigator.of(context).pushNamed(BookListScreen.routeName);
-
-                Navigator.of(context).pushReplacementNamed(BookListScreen.routeName);
+                Navigator
+                  .of(context)
+                  .push(
+                      MaterialPageRoute(
+                            builder: (context) => BookListScreen()),
+                  );
               },
             ),
         ]

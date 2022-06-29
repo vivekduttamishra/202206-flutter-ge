@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'const.dart';
 import 'screens/book_details_screen.dart';
 import 'screens/book_list_screen.dart';
-import 'screens/book_summary_screen.dart';
 import 'screens/welcome_screen.dart';
 //import 'screens/welcome_screen.dart';
 
@@ -18,19 +17,29 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
    
-   
+   String activeScreen="home";
+   dynamic parameter;
+   get screen{
+    var screens={
+      "home":()=> WelcomeScreen(navigate),
+      "list":()=>BookListScreen(navigate),
+      "details":()=>BookDetailsScreen(navigate,parameter)
+    };
+    return screens[activeScreen];
+  }
+
+  navigate(screen,{parameter}){
+    print('parameter is $parameter');
+    setState((){
+      activeScreen=screen;
+      this.parameter=parameter;
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
-      routes: {
-        WelcomeScreen.routeName: (context)=> WelcomeScreen(),
-        BookListScreen.routeName: (context)=> BookListScreen(),
-        BookSummaryScreen.routeName: (context)=> BookSummaryScreen(),
-        BookDetailsScreen.routeName: (context)=> BookDetailsScreen(),
-      },
-      //initialRoute: "home", //defaults to "/"
-      
+      home: screen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme(

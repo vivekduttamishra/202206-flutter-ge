@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'const.dart';
 import 'screens/book_details_screen.dart';
 import 'screens/book_list_screen.dart';
-import 'screens/book_summary_screen.dart';
 import 'screens/welcome_screen.dart';
 //import 'screens/welcome_screen.dart';
 
@@ -22,15 +21,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
-      routes: {
-        WelcomeScreen.routeName: (context)=> WelcomeScreen(),
-        BookListScreen.routeName: (context)=> BookListScreen(),
-        BookSummaryScreen.routeName: (context)=> BookSummaryScreen(),
-        BookDetailsScreen.routeName: (context)=> BookDetailsScreen(),
-      },
-      //initialRoute: "home", //defaults to "/"
-      
+      home: WelcomeScreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme(

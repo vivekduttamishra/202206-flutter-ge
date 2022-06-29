@@ -6,9 +6,9 @@ import '../const.dart';
 import '../services/book.dart';
 import 'book_info_line.dart';
 
-class BookReviews extends StatelessWidget {
+class BookDetails extends StatelessWidget {
   final Book book;
-  const BookReviews(this.book, {Key? key}) : super(key: key);
+  const BookDetails(this.book, {Key? key}) : super(key: key);
   createInfoRow(context, label, value) {
     return Column(
       children: [
@@ -41,15 +41,20 @@ class BookReviews extends StatelessWidget {
       height: double.infinity,
       width: double.infinity,
       padding: EdgeInsets.all(10),
-      child: Column(
-        children: [
-          BookInfoLine(book,),
-          Divider(color: dividerColor),
-          Text(
-            'Reviews',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            BookInfoLine(book),
+            Divider(color: dividerColor),
+            Text(
+              'Synopsys',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            Text(
+              book.description,
+            ),
+          ],
+        ),
       ),
     );
   }

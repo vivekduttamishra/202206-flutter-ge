@@ -7,13 +7,13 @@ import '../components/book_reviews.dart';
 import '../components/book_summary.dart';
 import '../const.dart';
 import '../services/book.dart';
-import 'book_list_screen.dart';
+import 'book_details_screen.dart';
 
-class BookDetailsScreen extends StatelessWidget {
-   static const routeName="/book/details";
+class BookSummaryScreen extends StatelessWidget {
+   static const routeName="/book/summary";
   //dynamic book ;
   
-  BookDetailsScreen( {Key? key}) : super(key: key);
+  BookSummaryScreen( {Key? key}) : super(key: key);
 
   
   @override
@@ -23,18 +23,13 @@ class BookDetailsScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(title: Text(book.title), actions: [
           TextButton(
-            child: Icon(Icons.list, color: Theme.of(context).colorScheme.onPrimary),
+            child: Icon(Icons.library_books, color: Theme.of(context).colorScheme.onPrimary),
             onPressed: () {
-               //Navigator.of(context).pop()
-               Navigator.pushNamedAndRemoveUntil(
-                      context, 
-                      BookListScreen.routeName, 
-                      ModalRoute.withName(BookListScreen.routeName)
-              );
+               Navigator.of(context).pushNamed(BookDetailsScreen.routeName, arguments:book);
             },
           )
         ]),
-        body: BookDetails(book),
+        body: BookSummary(book),
         //floatingActionButton:FloatingActionButton(onPressed: (){},),
     );
   }

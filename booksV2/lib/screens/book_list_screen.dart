@@ -6,10 +6,8 @@ import '../components/book_info_line.dart';
 import '../services/BookManager.dart';
 import '../services/BookSeeder.dart';
 import 'book_details_screen.dart';
-import 'book_summary_screen.dart';
 
 class BookListScreen extends StatelessWidget {
-   static const routeName="/book/list";
   final BookManager bookManager = BookManager();
   
   BookListScreen( {Key? key}) : super(key: key) {
@@ -25,7 +23,7 @@ class BookListScreen extends StatelessWidget {
           actions: [
             TextButton(
               child: Icon(
-                Icons.add,
+                Icons.info_outline,
                  color:Theme.of(context).colorScheme.onPrimary,
               ),
               onPressed: () {
@@ -49,15 +47,12 @@ class BookListScreen extends StatelessWidget {
                       var b = bookManager.getAllBooks()[index];
                       return GestureDetector(
                               onTap: (){
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //       builder: (context)=> BookDetailsScreen(b)
-                                //     ),
-                                //   );
-
-                                Navigator.of(context)
-                                        .pushNamed(BookSummaryScreen.routeName, arguments:b);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context)=> BookDetailsScreen(b)
+                                    ),
+                                  );
                               },
                               child: BookInfoLine(b)
                             );
