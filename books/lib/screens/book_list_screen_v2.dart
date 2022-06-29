@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../components/book_info_line.dart';
 import '../services/BookManager.dart';
 import '../services/BookSeeder.dart';
 
@@ -38,13 +37,33 @@ class BookListScreen extends StatelessWidget {
               'Total Books: ${bookManager.getAllBooks().length}',
             ),
             Expanded(
-              child: ListView.builder(
-                    itemCount: bookManager.getAllBooks().length,
-                    itemBuilder: (ctx, index){
-                      var b = bookManager.getAllBooks()[index];
-                      return BookInfoLine(b);
-                    },
-              ),
+              
+              child: ListView(
+                  children: bookManager.getAllBooks().map((b) {
+                return Container(
+                  margin: EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 20,
+                  ),
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.secondary,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.network(
+                            b.cover,
+                            width:100,
+                      ),
+                      Text(
+                        b.title,
+                        style: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                    ],
+                  ),
+                );
+              }).toList()),
             ),
           ],
         ),

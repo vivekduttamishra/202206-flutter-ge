@@ -38,12 +38,11 @@ class BookListScreen extends StatelessWidget {
               'Total Books: ${bookManager.getAllBooks().length}',
             ),
             Expanded(
-              child: ListView.builder(
-                    itemCount: bookManager.getAllBooks().length,
-                    itemBuilder: (ctx, index){
-                      var b = bookManager.getAllBooks()[index];
-                      return BookInfoLine(b);
-                    },
+              child: ListView(
+                children: bookManager
+                    .getAllBooks()
+                    .map((b) => BookInfoLine(b))
+                    .toList(),
               ),
             ),
           ],
