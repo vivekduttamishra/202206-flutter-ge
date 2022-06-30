@@ -6,7 +6,7 @@ import 'const.dart';
 import 'screens/book_add_screen.dart';
 import 'screens/book_details_screen.dart';
 import 'screens/book_list_screen.dart';
-
+import 'screens/book_summary_screen.dart';
 import 'screens/user_login_screen.dart';
 import 'screens/user_register_screen.dart';
 import 'screens/welcome_screen.dart';
@@ -29,12 +29,13 @@ class _AppState extends State<App> {
       routes: {
         WelcomeScreen.routeName: (context)=> WelcomeScreen(),
         BookListScreen.routeName: (context)=> BookListScreen(),
+        BookSummaryScreen.routeName: (context)=> BookSummaryScreen(),
         BookDetailsScreen.routeName: (context)=> BookDetailsScreen(),
         BookAddScreen.routeName: (context)=> BookAddScreen(),
         UserLoginScreen.routeName: (context)=> UserLoginScreen(),
         UserRegisterScreen.routeName: (context)=> UserRegisterScreen(),
       },
-      initialRoute: BookListScreen.routeName,
+      initialRoute: "/", //defaults to "/"
       
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

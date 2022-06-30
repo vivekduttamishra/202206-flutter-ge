@@ -8,7 +8,7 @@ import '../services/BookManager.dart';
 import '../services/BookSeeder.dart';
 import 'book_add_screen.dart';
 import 'book_details_screen.dart';
-
+import 'book_summary_screen.dart';
 
 class BookListScreen extends StatelessWidget {
    static const routeName="/book/list";
@@ -63,7 +63,7 @@ class BookListScreen extends StatelessWidget {
                                 //   );
 
                                 Navigator.of(context)
-                                        .pushNamed(BookDetailsScreen.routeName, arguments:b);
+                                        .pushNamed(BookSummaryScreen.routeName, arguments:b);
                               },
                               child: BookInfoLine(b)
                             );
