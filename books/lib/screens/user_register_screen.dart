@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../components/app_drawr.dart';
 import '../components/utils.dart';
 import '../utils/validators.dart';
 
@@ -143,6 +144,8 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> with Validators
               ),
             ],
           ),
-        ));
+        ),
+        drawer:AppDrawer(),
+        );
   }
 }

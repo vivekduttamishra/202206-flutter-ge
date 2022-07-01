@@ -5,7 +5,7 @@ import 'book_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  static const routeName="/";
+  static const routeName="/home";
   const WelcomeScreen( {Key? key}) : super(key: key);
 
   @override

@@ -40,22 +40,24 @@ class BookSummary extends StatelessWidget{
           height: double.infinity,
           width: double.infinity,
           padding: EdgeInsets.all(10),
-          child: Column(
-            children: [
-              Text(
-                book.title,
-                style: Theme.of(context).textTheme.headlineLarge,
-              ),
-              Divider(color: dividerColor),
-              Image.network(
-                book.cover,
-                height: 350,
-              ),
-              createInfoRow(context,'Author',book.author),
-              createInfoRow(context,'Price','₹${book.price}'),
-              createInfoRow(context,'Rating',book.rating),
-              
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Text(
+                  book.title,
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
+                Divider(color: dividerColor),
+                Image.network(
+                  book.cover,
+                  height: 350,
+                ),
+                createInfoRow(context,'Author',book.author),
+                createInfoRow(context,'Price','₹${book.price}'),
+                createInfoRow(context,'Rating',book.rating),
+                
+              ],
+            ),
           ),
         );
   }

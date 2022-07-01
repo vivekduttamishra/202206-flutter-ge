@@ -45,6 +45,10 @@ class _MyAppState extends State<MyApp> {
     
     return MaterialApp(
       home: screen(),
+      theme: ThemeData(
+        primarySwatch: Colors.lime,
+        canvasColor:Colors.yellow.shade200,
+      ),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -7,11 +7,14 @@ import '../components/book_details.dart';
 import '../components/book_reviews.dart';
 import '../components/book_summary.dart';
 import '../const.dart';
+import '../services/BookManager.dart';
 import '../services/book.dart';
 import 'book_list_screen.dart';
+import 'simple_screen.dart';
 
 class BookDetailsScreen extends StatefulWidget {
    static const routeName="/book/details";
+   final bookManager=BookManager();
   //dynamic book ;
   
   BookDetailsScreen( {Key? key}) : super(key: key);
@@ -30,15 +33,24 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
         (book)=> BookReviews(book),
     ];
   
+  getContentScreen(title,content){
+
+      return Scaffold(
+        appBar: AppBar(
+                    title: Text(title),
+                ),
+
+        body:content,
+
+      );
+
+
+  }
   
-
-  @override
-  Widget build(BuildContext context) {
-    var book = ModalRoute.of(context)!.settings.arguments as Book;
-
+  getBookDetailsScreen(book){
     return Scaffold(
         
-        appBar: AppBar(title: Text(book.title), 
+        appBar: AppBar(title: Text('${book.title}'), 
         actions: [
           //This action is removed. It exists only for documentations
           TextButton(
@@ -104,6 +116,42 @@ class _BookDetailsScreenState extends State<BookDetailsScreen> {
         ),
      
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var isbn = ModalRoute.of(context)!.settings.arguments as String;
+
+    return FutureBuilder<Book>(
+      future: widget.bookManager.getBookById('${isbn}'),  //note this is future not book
+
+      builder: (context, snapshot) {
+        if(snapshot.hasData){
+          return getBookDetailsScreen(snapshot.data!);
+        } else if(snapshot.hasError){
+          return SimpleScreen(
+              title:'Error', 
+                child:Text(
+                  'Error Fetching isbn: $isbn', 
+                  style:Theme.of(context).textTheme.bodyMedium),
+              );
+          
+        } else{
+            return SimpleScreen(
+              title:'Fetching $isbn', 
+              child:Center(
+                  child:CircularProgressIndicator(),
+              ),
+            
+            );
+        }
+          
+      }
+
+    );
+    
+    
+    
   }
 }
 

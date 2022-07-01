@@ -31,7 +31,7 @@ class QuestionInfo extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Card(
-              color:Colors.yellow.shade200,
+              color:Colors.lime,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column (

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.quiz">
+    package="in.vnc.quizge">
    <application
         android:label="quiz"
         android:name="${applicationName}"
