@@ -27,7 +27,7 @@ class Quiz{
   Question get currentQuestion => quizQuestions[currentQuestionIndex-1];
 
   respond(int givenAnswerIndex){
-    if(!currentQuestion.isAnswered){
+    if(!currentQuestion.isAnswered && !quizOver){
       currentQuestion.givenAnswerIndex=givenAnswerIndex;
       totalQuestionAnswered++;
       if(currentQuestion.isCorrectAnswer)
@@ -37,6 +37,10 @@ class Quiz{
     } else {
       return false; //reponse rejected because question is already answered
     }
+  }
+
+  endQuiz(){
+    totalQuestionAnswered=totalQuestions;
   }
 
   next(){

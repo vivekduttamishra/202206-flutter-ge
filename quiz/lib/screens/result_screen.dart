@@ -47,20 +47,21 @@ class ResultScreen extends StatelessWidget{
     
     return Scaffold(
       appBar: AppBar(
-        leading:Icon(Icons.summarize),
+        //leading:Icon(Icons.summarize),
         title:Text('Result'),
         actions:[
           TextButton(
             child:Icon(
-              Icons.rate_review,
-              color: Colors.white,
+              Icons.pageview,
+              color: Colors.black,
               ),
             onPressed:(){navigate('quiz');},
           ),
           TextButton(
             child:Icon(
               Icons.home, 
-              color: Colors.white,),
+              color: Colors.black,
+            ),
             onPressed:(){navigate('home');},
           ),
         ]

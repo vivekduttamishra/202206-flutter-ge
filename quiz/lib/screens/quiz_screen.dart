@@ -11,37 +11,40 @@ import '../services/question.dart';
 class QuizScreen extends StatefulWidget {
   final Quiz quiz;
   final Function navigate;
-  const QuizScreen(this.quiz, this. navigate, {Key? key}) : super(key: key);
+  const QuizScreen(this.quiz, this.navigate, {Key? key}) : super(key: key);
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-
   //Question? _currentQuestion;
 
   // Question get currentQuestion=>_currentQuestion ?? widget.quiz.currentQuestion;
   // set currentQuestion(value)=> _currentQuestion=value;
 
-  submitAnswer(answerIndex){
-    setState((){
+  submitAnswer(answerIndex) {
+    setState(() {
       widget.quiz.respond(answerIndex);
-      var q= widget.quiz.currentQuestion;
-      while(true){
+      var q = widget.quiz.currentQuestion;
+      if (widget.quiz.quizOver) {
+        widget.navigate('result');
+      }
+
+      while (true) {
         widget.quiz.next();
-        if(!widget.quiz.currentQuestion.isAnswered|| widget.quiz.currentQuestionIndex==widget.quiz.totalQuestions)
+        if (!widget.quiz.currentQuestion.isAnswered ||
+            widget.quiz.currentQuestionIndex == widget.quiz.totalQuestions)
           break;
       }
     });
   }
 
-
-  getAnswerButtons(Question question){
-
-    List<Widget> buttons=[];
-    for(int i=0;i<question.answers.length;i++){
-      var button=AnswerButton(question, i,onSelect:submitAnswer);
+  getAnswerButtons(Question question) {
+    List<Widget> buttons = [];
+    for (int i = 0; i < question.answers.length; i++) {
+      var button = AnswerButton(question, i,
+          onSelect: widget.quiz.quizOver ? null : submitAnswer);
       buttons.add(button);
     }
 
@@ -54,21 +57,27 @@ class _QuizScreenState extends State<QuizScreen> {
     //print(quiz.question.question);
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.question_mark),
+        //leading: Icon(Icons.question_mark),
         title: Text('Quizzy'),
         actions: [
           TextButton(
-            onPressed: () {widget.navigate("result");},
+            onPressed: () {
+              widget.quiz.endQuiz();
+              widget.navigate("result");
+            },
             child: Icon(
-              Icons.summarize,
-              color: Colors.white,
+              Icons.exit_to_app,
+              color: Colors.black,
             ),
           ),
           TextButton(
-            child:Icon(
-              Icons.home, 
-              color: Colors.white,),
-            onPressed:(){widget.navigate('home');},
+            child: Icon(
+              Icons.home,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              widget.navigate('home');
+            },
           ),
         ],
       ),
@@ -78,12 +87,9 @@ class _QuizScreenState extends State<QuizScreen> {
         height: double.infinity,
         padding: const EdgeInsets.all(12.0),
         child: Column(
-          
           //mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Column(
-              
-              
               children: [
                 Text(
                   widget.quiz.currentQuestion.question,
@@ -99,30 +105,28 @@ class _QuizScreenState extends State<QuizScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-               
                 children: getAnswerButtons(widget.quiz.currentQuestion),
               ),
             ),
-            
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(
                   onPressed: () {
-                    
-                    setState((){
-                        widget.quiz.previous();
+                    setState(() {
+                      widget.quiz.previous();
                     });
-                    print('next question ${widget.quiz.currentQuestion.question}');
+                    print(
+                        'next question ${widget.quiz.currentQuestion.question}');
                   },
                   child: Icon(Icons.arrow_back),
                 ),
-                Text('${widget.quiz.currentQuestionIndex} of ${widget.quiz.totalQuestions}'),
+                Text(
+                    '${widget.quiz.currentQuestionIndex} of ${widget.quiz.totalQuestions}'),
                 TextButton(
                   onPressed: () {
-                    
-                    setState((){
-                        widget.quiz.next();
+                    setState(() {
+                      widget.quiz.next();
                     });
                   },
                   child: Icon(Icons.arrow_forward),

@@ -8,7 +8,7 @@ import '../services/question.dart';
 class AnswerButton extends StatelessWidget{
   final Question question;
   final int currentAnswerIndex;
-  final Function onSelect;
+  final Function? onSelect;
 
   const AnswerButton(this.question,this.currentAnswerIndex,{Key? key,required this.onSelect}) : super(key: key);
 
@@ -33,12 +33,12 @@ class AnswerButton extends StatelessWidget{
   Widget build(BuildContext context) {
     
     handleSelect(){
-      onSelect(currentAnswerIndex);
-    };
+      onSelect!(currentAnswerIndex);
+    }
 
    
     return OutlinedButton(
-                    onPressed: question.isAnswered? null: handleSelect,
+                    onPressed: question.isAnswered||onSelect==null? null: handleSelect,
                     
                     style: OutlinedButton.styleFrom(
                       backgroundColor:backgroundColor,

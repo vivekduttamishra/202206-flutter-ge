@@ -1,10 +1,12 @@
 
 // ignore_for_file: prefer_const_constructors
 
+import 'book_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  static const routeName="/home";
+  const WelcomeScreen( {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +22,25 @@ class WelcomeScreen extends StatelessWidget {
             ),            
           ),
           Image.asset('assets/images/logo01.png'), 
-          TextButton(
+          ElevatedButton(
             child:Text('Start',
                 style:TextStyle(
                   fontFamily: 'Oswald',
                   fontSize: 30,
                 ),
               ),
-              onPressed:(){}
+              onPressed:(){
+                // Navigator
+                //   .of(context)
+                //   .push(
+                //       MaterialPageRoute(
+                //             builder: (context) => BookListScreen()),
+                //   );
+
+                //Navigator.of(context).pushNamed(BookListScreen.routeName);
+
+                Navigator.of(context).pushReplacementNamed(BookListScreen.routeName);
+              },
             ),
         ]
       ),
